@@ -40,7 +40,6 @@ export const metadata: Metadata = {
         "Create invoices effortlessly with Invoify, the free invoice generator. Try it now!",
     icons: [{ rel: "icon", url: Favicon.src }],
     keywords: ROOTKEYWORDS,
-    viewport: "width=device-width, initial-scale=1",
     robots: {
         index: true,
         follow: true,
@@ -56,6 +55,10 @@ export const metadata: Metadata = {
         google: GOOGLE_SC_VERIFICATION,
     },
 };
+
+export const viewport = {
+    width: 1,
+}
 
 export function generateStaticParams() {
     const locales = LOCALES.map((locale) => locale.code);
