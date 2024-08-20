@@ -36,6 +36,12 @@ const PaymentInformation = () => {
                     placeholder={_t("form.steps.paymentInfo.swish")}
                     vertical
                 />
+                <FormInput
+                    name="details.paymentInformation.bankGiro"
+                    label={_t("form.steps.paymentInfo.bankGiro")}
+                    placeholder={_t("form.steps.paymentInfo.bankGiro")}
+                    vertical
+                />
             </div>
         </section>
     );

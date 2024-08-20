@@ -120,6 +120,7 @@ const PaymentInformationSchema = z.object({
     accountName: fieldValidators.stringMin1,
     accountNumber: fieldValidators.stringMin1,
     swish: fieldValidators.stringMin1,
+    bankGiro: fieldValidators.stringMin1,
 });
 
 const DiscountDetailsSchema = z.object({

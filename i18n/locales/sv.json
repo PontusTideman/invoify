@@ -54,7 +54,8 @@
                 "bankName": "Banknamn",
                 "accountName": "Kontonamn",
                 "accountNumber": "Kontonummer",
-                "swish": "Swish"
+                "swish": "Swish",
+                "bankGiro": "Bankgiro"
             },
             "summary": {
                 "heading": "Summering",

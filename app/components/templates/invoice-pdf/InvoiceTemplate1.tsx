@@ -261,6 +261,10 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                 Swish:{" "}
                                 {details.paymentInformation?.swish}
                             </p>
+                            <p className="text-sm">
+                                Bankgiro:{" "}
+                                {details.paymentInformation?.bankGiro}
+                            </p>
                         </span>
                     </div>
                 </div>
