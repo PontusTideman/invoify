@@ -1,0 +1,93 @@
+{
+    "form": {
+        "title": "Faktura",
+        "description": "Skapa faktura",
+        "newInvBadge": "Ny faktura",
+        "wizard": {
+            "fromAndTo": "Från & Till",
+            "invoiceDetails": "Fakturadetaljer",
+            "lineItems": "Artiklar",
+            "paymentInfo": "Betalningsinfo",
+            "summary": "Summering",
+            "next": "Nästa",
+            "back": "Tillbaka"
+        },
+        "steps": {
+            "fromAndTo": {
+                "billFrom": "Faktura från",
+                "billTo": "Faktura till",
+                "name": "Namn",
+                "address": "Adress",
+                "zipCode": "Postnr",
+                "city": "Stad",
+                "country": "Land",
+                "email": "Mail",
+                "phone": "Telefon",
+                "addCustomInput": "Lägg till anpassad rad",
+                "sender": "Avsändare",
+                "receiver": "Mottagare"
+            },
+            "invoiceDetails": {
+                "heading": "Fakturadetaljer",
+                "invoiceLogo": {
+                    "label": "Fakturalogga",
+                    "placeholder": "Klicka för att ladda upp"
+                },
+                "invoiceNumber": "Fakturanummer",
+                "issuedDate": "Fakturadatum",
+                "dueDate": "Förfallodatum",
+                "currency": "Valuta"
+            },
+            "lineItems": {
+                "heading": "Artiklar",
+                "item": "Artikel",
+                "name": "Namn",
+                "quantity": "Antal",
+                "rate": "Moms",
+                "total": "Total",
+                "description": "Beskrivning",
+                "addNewItem": "Lägg till ny artikel",
+                "removeItem": "Radera artikel"
+            },
+            "paymentInfo": {
+                "heading": "Betalningsinformation",
+                "bankName": "Banknamn",
+                "accountName": "Kontonamn",
+                "accountNumber": "Kontonummer",
+                "swish": "Swish"
+            },
+            "summary": {
+                "heading": "Summering",
+                "signature": {
+                    "heading": "Signatur",
+                    "placeholder": "Klicka för att lägga till signatur",
+                    "draw": "Rita",
+                    "type": "Skriv",
+                    "upload": "Ladda upp"
+                },
+                "additionalNotes": "Notering",
+                "paymentTerms": "Betalningsvillkor",
+                "discount": "Rabatt",
+                "tax": "Moms",
+                "shipping": "Frakt",
+                "subTotal": "À-pris ex moms",
+                "totalAmount": "Totalt belopp",
+                "includeTotalInWords": "Inkludera totalen i bokstäver?",
+                "yes": "Ja",
+                "no": "Nej"
+            }
+        }
+    },
+    "actions": {
+        "title": "Actions",
+        "description": "Operations and preview",
+        "loadInvoice": "Ladda faktura",
+        "exportInvoice": "Exportera faktura",
+        "newInvoice": "Ny faktura",
+        "generatePdf": "Skapa faktura",
+        "pdfView": "PDF-vy"
+    },
+    "footer": {
+        "developedBy": "Utvecklad av"
+    }
+}

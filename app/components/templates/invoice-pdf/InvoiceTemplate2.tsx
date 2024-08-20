@@ -58,9 +58,9 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                         {receiver.name}
                     </h3>
                     <address className="mt-2 not-italic text-gray-500">
-                        {receiver.address}, {receiver.zipCode}
+                        {receiver.address} {receiver.zipCode}
                         <br />
-                        {receiver.city}, {receiver.country}
+                        {receiver.city} {receiver.country}
                         <br />
                     </address>
                 </div>

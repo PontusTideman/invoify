@@ -58,9 +58,9 @@ const InvoiceTemplate = (data: InvoiceType) => {
                         {receiver.name}
                     </h3>
                     <address className="mt-2 not-italic text-gray-500">
-                        {receiver.address}, {receiver.zipCode}
+                        {receiver.address} {receiver.zipCode}
                         <br />
-                        {receiver.city}, {receiver.country}
+                        {receiver.city} {receiver.country}
                         <br />
                     </address>
                 </div>
@@ -256,6 +256,10 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             <p className="text-sm">
                                 Account no:{" "}
                                 {details.paymentInformation?.accountNumber}
+                            </p>
+                            <p className="text-sm">
+                                Swish:{" "}
+                                {details.paymentInformation?.swish}
                             </p>
                         </span>
                     </div>

@@ -56,7 +56,8 @@ export const LOCALES = [
     { code: "en", name: "English" },
     { code: "de", name: "Deutsch" },
     { code: "es", name: "Español"},
-    { code: "fr", name: "Français" }
+    { code: "fr", name: "Français" },
+    { code: "sv", name: "Swedish" }
 ];
 export const DEFAULT_LOCALE = LOCALES[0].code;
 
