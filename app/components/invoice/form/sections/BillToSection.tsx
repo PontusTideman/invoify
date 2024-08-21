@@ -79,6 +79,16 @@ const BillToSection = () => {
                 label={_t("form.steps.fromAndTo.phone")}
                 placeholder="Receiver phone number"
             />
+            <FormInput
+                name="receiver.orgNr"
+                label={_t("form.steps.fromAndTo.orgNr")}
+                placeholder="Receiver organization number"
+            />
+            <FormInput
+                name="receiver.VatIn"
+                label={_t("form.steps.fromAndTo.vatIn")}
+                placeholder="Receiver VATin number"
+            />
 
             {/* //? key = field.id fixes a bug where wrong field gets deleted  */}
             {fields?.map((field, index) => (

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 // Components
@@ -9,11 +11,15 @@ import { formatNumberWithCommas, isDataUrl } from "@/lib/helpers";
 // Variables
 import { DATE_OPTIONS } from "@/lib/variables";
 
+// Contexts
+import { useTranslationContext } from "@/contexts/TranslationContext";
+
 // Types
 import { InvoiceType } from "@/types";
 
 const InvoiceTemplate = (data: InvoiceType) => {
     const { sender, receiver, details } = data;
+    const { _t } = useTranslationContext();
 
     return (
         <InvoiceLayout data={data}>
@@ -27,23 +33,29 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             alt={`Logo of ${sender.name}`}
                         />
                     )}
-                    <h1 className="mt-2 text-lg md:text-xl font-semibold text-blue-600">
+{/*                     <h1 className="mt-2 text-lg md:text-xl font-semibold text-blue-600">
                         {sender.name}
-                    </h1>
+                    </h1> */}
                 </div>
                 <div className="text-right">
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                        Invoice #
+                        {_t("invoice.title")} # {details.invoiceNumber}
                     </h2>
-                    <span className="mt-1 block text-gray-500">
+{/*                     <span className="mt-1 block text-gray-500">
                         {details.invoiceNumber}
-                    </span>
+                    </span> */}
                     <address className="mt-4 not-italic text-gray-800">
+                        {sender.name}
+                        <br />
                         {sender.address}
                         <br />
-                        {sender.zipCode}, {sender.city}
+                        {sender.zipCode} {sender.city}
                         <br />
                         {sender.country}
+                        <br />
+                        {_t("form.steps.fromAndTo.orgNr")}:{" "} {sender.orgNr}
+                        <br />
+                        {_t("form.steps.fromAndTo.vatIn")}:{" "}{sender.VatIn}
                         <br />
                     </address>
                 </div>
@@ -52,7 +64,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
             <div className="mt-6 grid sm:grid-cols-2 gap-3">
                 <div>
                     <h3 className="text-lg font-semibold text-gray-800">
-                        Bill to:
+                    {_t("invoice.billTo")}:
                     </h3>
                     <h3 className="text-lg font-semibold text-gray-800">
                         {receiver.name}
@@ -68,7 +80,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                Invoice date:
+                            {_t("invoice.invoiceDate")}:
                             </dt>
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(
@@ -78,13 +90,12 @@ const InvoiceTemplate = (data: InvoiceType) => {
                         </dl>
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                Due date:
+                            {_t("invoice.dueDate")}:
                             </dt>
                             <dd className="col-span-3 text-gray-500">
-                                {new Date(details.dueDate).toLocaleDateString(
-                                    "en-US",
-                                    DATE_OPTIONS
-                                )}
+                                {new Date(
+                                    details.dueDate
+                                ).toLocaleDateString("en-US",DATE_OPTIONS)}
                             </dd>
                         </dl>
                     </div>
@@ -93,22 +104,25 @@ const InvoiceTemplate = (data: InvoiceType) => {
 
             <div className="mt-3">
                 <div className="border border-gray-200 p-1 rounded-lg space-y-1">
-                    <div className="hidden sm:grid sm:grid-cols-5">
+                    <div className="hidden sm:grid sm:grid-cols-6">
                         <div className="sm:col-span-2 text-xs font-medium text-gray-500 uppercase">
-                            Item
+                            {_t("invoice.item")}
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            Qty
+                            {_t("invoice.qty")}
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            Rate
+                            {_t("invoice.unit")}
+                        </div>
+                        <div className="text-left text-xs font-medium text-gray-500 uppercase">
+                            {_t("invoice.rate")}
                         </div>
                         <div className="text-right text-xs font-medium text-gray-500 uppercase">
-                            Amount
+                            {_t("invoice.amount")}
                         </div>
                     </div>
                     <div className="hidden sm:block border-b border-gray-200"></div>
-                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-y-1">
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-y-1">
                         {details.items.map((item, index) => (
                             <React.Fragment key={index}>
                                 <div className="col-span-full sm:col-span-2 border-b border-gray-300">
@@ -122,6 +136,11 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                 <div className="border-b border-gray-300">
                                     <p className="text-gray-800">
                                         {item.quantity}
+                                    </p>
+                                </div>
+                                <div className="border-b border-gray-300">
+                                    <p className="text-gray-800">
+                                        {item.unit}
                                     </p>
                                 </div>
                                 <div className="border-b border-gray-300">
@@ -146,7 +165,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl className="grid sm:grid-cols-5 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                Subtotal:
+                                {_t("invoice.subTotal")}:
                             </dt>
                             <dd className="col-span-2 text-gray-500">
                                 {formatNumberWithCommas(
@@ -159,7 +178,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             details.discountDetails?.amount > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        Discount:
+                                        {_t("invoice.discount")}:
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.discountDetails.amountType ===
@@ -173,7 +192,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             details.taxDetails?.amount > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        Tax:
+                                        {_t("invoice.tax")}:
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.taxDetails.amountType ===
@@ -187,7 +206,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             details.shippingDetails?.cost > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        Shipping:
+                                        {_t("invoice.shipping")}:
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.shippingDetails.costType ===
@@ -199,7 +218,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             )}
                         <dl className="grid sm:grid-cols-5 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                Total:
+                                {_t("invoice.total")}:
                             </dt>
                             <dd className="col-span-2 text-gray-500">
                                 {formatNumberWithCommas(
@@ -211,7 +230,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                         {details.totalAmountInWords && (
                             <dl className="grid sm:grid-cols-5 gap-x-3">
                                 <dt className="col-span-3 font-semibold text-gray-800">
-                                    Total in words:
+                                    {_t("invoice.totalInWord")}:
                                 </dt>
                                 <dd className="col-span-2 text-gray-500">
                                     <em>
@@ -229,7 +248,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                 <div className="my-4">
                     <div className="my-2">
                         <p className="font-semibold text-blue-600">
-                            Additional notes:
+                            {_t("invoice.additionalNotes")}:
                         </p>
                         <p className="font-regular text-gray-800">
                             {details.additionalNotes}
@@ -237,7 +256,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                     </div>
                     <div className="my-2">
                         <p className="font-semibold text-blue-600">
-                            Payment terms:
+                            {_t("invoice.paymentTerms")}:
                         </p>
                         <p className="font-regular text-gray-800">
                             {details.paymentTerms}
@@ -245,32 +264,31 @@ const InvoiceTemplate = (data: InvoiceType) => {
                     </div>
                     <div className="my-2">
                         <span className="font-semibold text-md text-gray-800">
-                            Please send the payment to this address
+                            {_t("invoice.sendPayment")}
                             <p className="text-sm">
-                                Bank: {details.paymentInformation?.bankName}
+                                {_t("invoice.bank")}: {details.paymentInformation?.bankName}
                             </p>
                             <p className="text-sm">
-                                Account name:{" "}
+                                {_t("invoice.accountName")}:{" "}
                                 {details.paymentInformation?.accountName}
                             </p>
                             <p className="text-sm">
-                                Account no:{" "}
+                                {_t("invoice.accountNumber")}:{" "}
                                 {details.paymentInformation?.accountNumber}
                             </p>
                             <p className="text-sm">
-                                Swish:{" "}
+                                {_t("invoice.swish")}:{" "}
                                 {details.paymentInformation?.swish}
                             </p>
                             <p className="text-sm">
-                                Bankgiro:{" "}
+                                {_t("invoice.bankGiro")}:{" "}
                                 {details.paymentInformation?.bankGiro}
                             </p>
-                        </span>
+                        </span> 
                     </div>
                 </div>
                 <p className="text-gray-500 text-sm">
-                    If you have any questions concerning this invoice, use the
-                    following contact information:
+                    {_t("invoice.concerningQuestions")}:
                 </p>
                 <div>
                     <p className="block text-sm font-medium text-gray-800">
@@ -285,7 +303,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
             {/* Signature */}
             {details?.signature?.data && isDataUrl(details?.signature?.data) ? (
                 <div className="mt-6">
-                    <p className="font-semibold text-gray-800">Signature:</p>
+                    <p className="font-semibold text-gray-800">{_t("invoice.signature")}:</p>
                     <img
                         src={details.signature.data}
                         width={120}
@@ -295,7 +313,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                 </div>
             ) : details.signature?.data ? (
                 <div className="mt-6">
-                    <p className="text-gray-800">Signature:</p>
+                    <p className="text-gray-800">{_t("invoice.signature")}:</p>
                     <p
                         style={{
                             fontSize: 30,

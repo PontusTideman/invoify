@@ -40,6 +40,18 @@ const fieldValidators = {
         .max(50, {
             message: "Must be between 1 and 50 characters",
         }),
+    orgNr: z
+        .string()
+        .min(1, { message: "Must be between 1 and 13 characters" })
+        .max(13, {
+            message: "Must be between 1 and 13 characters",
+        }),
+    VatIn: z
+        .string()
+        .min(1, { message: "Must be between 1 and 15 characters" })
+        .max(15, {
+            message: "Must be between 1 and 15 characters",
+        }),
 
     // Dates
     date: z
@@ -93,6 +105,8 @@ const InvoiceSenderSchema = z.object({
     country: fieldValidators.country,
     email: fieldValidators.email,
     phone: fieldValidators.phone,
+    orgNr: fieldValidators.orgNr,
+    VatIn: fieldValidators.VatIn,
     customInputs: z.array(CustomInputSchema).optional(),
 });
 
@@ -111,6 +125,7 @@ const ItemSchema = z.object({
     name: fieldValidators.stringMin1,
     description: fieldValidators.stringOptional,
     quantity: fieldValidators.quantity,
+    unit: fieldValidators.stringMin1,
     unitPrice: fieldValidators.unitPrice,
     total: fieldValidators.stringToNumber,
 });

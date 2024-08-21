@@ -25,7 +25,9 @@
                 "phone": "Telefon",
                 "addCustomInput": "Lägg till anpassad rad",
                 "sender": "Avsändare",
-                "receiver": "Mottagare"
+                "receiver": "Mottagare",
+                "orgNr": "Orgnr",
+                "vatIn": "Momsregnr"
             },
             "invoiceDetails": {
                 "heading": "Fakturadetaljer",
@@ -43,7 +45,8 @@
                 "item": "Artikel",
                 "name": "Namn",
                 "quantity": "Antal",
-                "rate": "Moms",
+                "unit": "Enhet",
+                "rate": "Pris",
                 "total": "Total",
                 "description": "Beskrivning",
                 "addNewItem": "Lägg till ny artikel",
@@ -90,5 +93,32 @@
     },
     "footer": {
         "developedBy": "Utvecklad av"
+    },
+    "invoice": {
+        "title": "Faktura",
+        "billTo": "Faktura till",
+        "invoiceDate": "Fakturadatum",
+        "dueDate": "Förfallodatum",
+        "item": "Artikel",
+        "qty": "Antal",
+        "unit": "Enhet",
+        "rate": "À pris",
+        "amount": "Summa",
+        "subTotal": "Exkl moms",
+        "discount": "Rabatt",
+        "tax": "Moms",
+        "shipping": "Frakt",
+        "total": "Summa att betala",
+        "totalInWord": "Totalen i bokstäver",
+        "additionalNotes": "Notering",
+        "paymentTerms": "Betalningsvillkor",
+        "sendPayment": "Använd dessa uppgifter vid betalning",
+        "bank": "Bank",
+        "accountName": "Kontonamn",
+        "accountNumber": "Kontonummer",
+        "swish": "Swish",
+        "bankGiro": "Bankgiro",
+        "concerningQuestions": "Har du några frågor rörande denna faktura, använd följande kontaktuppgifter",
+        "signature": "Signatur"
     }
 }
